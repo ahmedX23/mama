@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* HIGH-PERFORMANCE INTERSECTION OBSERVER ANIMATIONS CLASS ENGINE */
+.animate-on-scroll {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-up {
+  transform: translateY(30px);
+}
+
+.fade-in-left {
+  transform: translateX(-30px);
+}
+
+.fade-in-right {
+  transform: translateX(30px);
+}
+
+/* Trigger states executed dynamically by our viewport observer */
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translate(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
